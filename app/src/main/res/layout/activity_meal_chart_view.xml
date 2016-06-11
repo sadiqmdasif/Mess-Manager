@@ -7,14 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="net.simplifiedcoding.mysqlcrud.MonthlyExpenseActivity">
+    tools:context="net.simplifiedcoding.mysqlcrud.MealChartView">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Monthly Expense"
-        android:id="@+id/textViewMExpense"
-        android:layout_marginTop="36dp"
+        android:text="Meals"
+        android:id="@+id/textViewMealList"
+        android:layout_marginTop="25dp"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -22,11 +22,11 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollViewMonthlyExpense"
-        android:layout_below="@+id/textViewMExpense"
+        android:id="@+id/scrollViewMealList"
+        android:layout_below="@+id/textViewMealList"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="48dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -35,7 +35,7 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listViewMonthlyExpense"
+            android:id="@+id/listViewMeals"
             android:choiceMode="singleChoice" />
     </ScrollView>
 </RelativeLayout>

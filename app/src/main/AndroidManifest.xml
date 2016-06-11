@@ -44,7 +44,11 @@
         <activity android:name=".AdminActivity" />
         <activity android:name=".MemberActivity" />
         <activity android:name=".AdminPanel" />
-        <activity android:name=".MonthlyExpenseActivity"></activity>
+        <activity android:name=".MonthlyExpenseActivity" />
+        <activity android:name=".MealList" />
+        <activity android:name=".MealChartView" />
+        <activity android:name=".BazarChartView" />
+        <activity android:name=".DailyBazarSpend"></activity>
     </application>
 
 </manifest>
