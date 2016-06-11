@@ -3,7 +3,7 @@ package net.simplifiedcoding.mysqlcrud;
 /**
  * Created by Belal on 10/24/2015.
  */
-public class Config {
+public class Config_DBConnection {
     //Address of our scripts of the CRUD
     public static final String URL_ADD="http://sadiqmdasif.net16.net/billsplit/addEmp.php";
     public static final String URL_GET_ALL = "http://sadiqmdasif.net16.net/billsplit/getAllEmp.php";

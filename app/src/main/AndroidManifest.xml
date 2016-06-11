@@ -34,10 +34,17 @@
         <activity
             android:name=".ViewEmployee"
             android:label="@string/title_activity_view_employee"
-            android:parentActivityName=".ViewAllEmployee"></activity>
+            android:parentActivityName=".ViewAllEmployee" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+        <activity android:name=".RegisterMess" />
+        <activity android:name=".CreateMess" />
+        <activity android:name=".JoinMess" />
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".MemberActivity" />
+        <activity android:name=".AdminPanel" />
+        <activity android:name=".MonthlyExpenseActivity"></activity>
     </application>
 
 </manifest>

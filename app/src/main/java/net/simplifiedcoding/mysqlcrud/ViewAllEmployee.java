@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,16 +39,16 @@ public class ViewAllEmployee extends AppCompatActivity implements ListView.OnIte
         ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String, String>>();
         try {
             jsonObject = new JSONObject(JSON_STRING);
-            JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
+            JSONArray result = jsonObject.getJSONArray(Config_DBConnection.TAG_JSON_ARRAY);
 
             for(int i = 0; i<result.length(); i++){
                 JSONObject jo = result.getJSONObject(i);
-                String id = jo.getString(Config.TAG_ID);
-                String name = jo.getString(Config.TAG_NAME);
+                String id = jo.getString(Config_DBConnection.TAG_ID);
+                String name = jo.getString(Config_DBConnection.TAG_NAME);
 
                 HashMap<String,String> employees = new HashMap<>();
-                employees.put(Config.TAG_ID,id);
-                employees.put(Config.TAG_NAME,name);
+                employees.put(Config_DBConnection.TAG_ID,id);
+                employees.put(Config_DBConnection.TAG_NAME,name);
                 list.add(employees);
             }
 
@@ -61,7 +58,7 @@ public class ViewAllEmployee extends AppCompatActivity implements ListView.OnIte
 
         ListAdapter adapter = new SimpleAdapter(
                 ViewAllEmployee.this, list, R.layout.list_item,
-                new String[]{Config.TAG_ID,Config.TAG_NAME},
+                new String[]{Config_DBConnection.TAG_ID, Config_DBConnection.TAG_NAME},
                 new int[]{R.id.id, R.id.name});
 
         listView.setAdapter(adapter);
@@ -88,7 +85,7 @@ public class ViewAllEmployee extends AppCompatActivity implements ListView.OnIte
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(Config.URL_GET_ALL);
+                String s = rh.sendGetRequest(Config_DBConnection.URL_GET_ALL);
                 return s;
             }
         }
@@ -100,8 +97,8 @@ public class ViewAllEmployee extends AppCompatActivity implements ListView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, ViewEmployee.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
-        String empId = map.get(Config.TAG_ID).toString();
-        intent.putExtra(Config.EMP_ID,empId);
+        String empId = map.get(Config_DBConnection.TAG_ID).toString();
+        intent.putExtra(Config_DBConnection.EMP_ID,empId);
         startActivity(intent);
     }
 }

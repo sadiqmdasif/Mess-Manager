@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,12 +68,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             protected String doInBackground(Void... v) {
                 HashMap<String,String> params = new HashMap<>();
-                params.put(Config.KEY_EMP_NAME,name);
-                params.put(Config.KEY_EMP_DESG,desg);
-                params.put(Config.KEY_EMP_SAL,sal);
+                params.put(Config_DBConnection.KEY_EMP_NAME,name);
+                params.put(Config_DBConnection.KEY_EMP_DESG,desg);
+                params.put(Config_DBConnection.KEY_EMP_SAL,sal);
 
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(Config.URL_ADD, params);
+                String res = rh.sendPostRequest(Config_DBConnection.URL_ADD, params);
                 return res;
             }
         }

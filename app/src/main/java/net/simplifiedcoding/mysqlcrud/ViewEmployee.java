@@ -7,8 +7,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +37,7 @@ public class ViewEmployee extends AppCompatActivity implements View.OnClickListe
 
         Intent intent = getIntent();
 
-        id = intent.getStringExtra(Config.EMP_ID);
+        id = intent.getStringExtra(Config_DBConnection.EMP_ID);
 
         editTextId = (EditText) findViewById(R.id.editTextId);
         editTextName = (EditText) findViewById(R.id.editTextName);
@@ -76,7 +74,7 @@ public class ViewEmployee extends AppCompatActivity implements View.OnClickListe
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(Config.URL_GET_EMP,id);
+                String s = rh.sendGetRequestParam(Config_DBConnection.URL_GET_EMP,id);
                 return s;
             }
         }
@@ -87,11 +85,11 @@ public class ViewEmployee extends AppCompatActivity implements View.OnClickListe
     private void showEmployee(String json){
         try {
             JSONObject jsonObject = new JSONObject(json);
-            JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
+            JSONArray result = jsonObject.getJSONArray(Config_DBConnection.TAG_JSON_ARRAY);
             JSONObject c = result.getJSONObject(0);
-            String name = c.getString(Config.TAG_NAME);
-            String desg = c.getString(Config.TAG_DESG);
-            String sal = c.getString(Config.TAG_SAL);
+            String name = c.getString(Config_DBConnection.TAG_NAME);
+            String desg = c.getString(Config_DBConnection.TAG_DESG);
+            String sal = c.getString(Config_DBConnection.TAG_SAL);
 
             editTextName.setText(name);
             editTextDesg.setText(desg);
@@ -126,14 +124,14 @@ public class ViewEmployee extends AppCompatActivity implements View.OnClickListe
             @Override
             protected String doInBackground(Void... params) {
                 HashMap<String,String> hashMap = new HashMap<>();
-                hashMap.put(Config.KEY_EMP_ID,id);
-                hashMap.put(Config.KEY_EMP_NAME,name);
-                hashMap.put(Config.KEY_EMP_DESG,desg);
-                hashMap.put(Config.KEY_EMP_SAL,salary);
+                hashMap.put(Config_DBConnection.KEY_EMP_ID,id);
+                hashMap.put(Config_DBConnection.KEY_EMP_NAME,name);
+                hashMap.put(Config_DBConnection.KEY_EMP_DESG,desg);
+                hashMap.put(Config_DBConnection.KEY_EMP_SAL,salary);
 
                 RequestHandler rh = new RequestHandler();
 
-                String s = rh.sendPostRequest(Config.URL_UPDATE_EMP,hashMap);
+                String s = rh.sendPostRequest(Config_DBConnection.URL_UPDATE_EMP,hashMap);
 
                 return s;
             }
@@ -163,7 +161,7 @@ public class ViewEmployee extends AppCompatActivity implements View.OnClickListe
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(Config.URL_DELETE_EMP, id);
+                String s = rh.sendGetRequestParam(Config_DBConnection.URL_DELETE_EMP, id);
                 return s;
             }
         }
